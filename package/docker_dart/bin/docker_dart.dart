@@ -1,19 +1,21 @@
 // ignore_for_file: unused_import
 
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:docker_dart/docker_cli/docker_dart_core.dart';
 import 'package:docker_dart/docker_dart.dart';
 import 'package:general_lib/general_lib.dart';
 
 void main(List<String> args) async {
-  print("START");
-  Docker docker = Docker();
+  // print("START");
+  DockerCli docker = Docker().cli();
   // ContainerDatas containerDatas = await docker.getContainers();
   // for (var element in containerDatas.containers) {
   //   element.toJson().printPretty();
 // }
   //
-  var res = await docker.getImages(
+  var res = await docker.getContainers(
       // name: "gnrl_api",
       // options: [
       //   "--network",
@@ -29,35 +31,39 @@ void main(List<String> args) async {
       );
   // print(res);
   //
+  //
+  //
+  print(json.encode(res.rawData));
+  exit(0);
 
-  List<String> images_ids = [];
-  for (var element in res.images) {
-    if (element.repository == "<none>") {
-      images_ids.add(element.image_id ?? "");
-    }
-  }
-  // var dlete = await docker.deleteImageByIds(image_ids: images_ids);
-  // print(dlete);
+  // List<String> images_ids = [];
   // for (var element in res.images) {
   //   if (element.repository == "<none>") {
+  //     images_ids.add(element.image_id ?? "");
   //   }
   // }
-  // print(res);
-  print(res.toJson().toStringifyPretty());
-  // print((await docker.utils_procces_toString(process: res)));
-  // res.stderr.listen((event) {
-  //   stderr.add(event);
-  // });
+  // // var dlete = await docker.deleteImageByIds(image_ids: images_ids);
+  // // print(dlete);
+  // // for (var element in res.images) {
+  // //   if (element.repository == "<none>") {
+  // //   }
+  // // }
+  // // print(res);
+  // print(res.toJson().toStringifyPretty());
+  // // print((await docker.utils_procces_toString(process: res)));
+  // // res.stderr.listen((event) {
+  // //   stderr.add(event);
+  // // });
 
-  // res.stdout.listen((event) {
-  //   stdout.add(event);
-  // });
+  // // res.stdout.listen((event) {
+  // //   stdout.add(event);
+  // // });
 
-  // var res = await docker.restartContainer(name: "telegram-bot-api");
+  // // var res = await docker.restartContainer(name: "telegram-bot-api");
 
-  // print(res);
-  // print(containerDatas.containers.forEach((element) {}).first.toJson().toStringifyPretty());
-  // ContainerData containerData = await docker.getContainerByName(name: "telegram-bot");
+  // // print(res);
+  // // print(containerDatas.containers.forEach((element) {}).first.toJson().toStringifyPretty());
+  // // ContainerData containerData = await docker.getContainerByName(name: "telegram-bot");
 
-  // print((await docker.test()).toStringifyPretty());
+  // // print((await docker.test()).toStringifyPretty());
 }

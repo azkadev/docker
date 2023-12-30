@@ -69,10 +69,10 @@ packages:
     dependency: transitive
     description:
       name: cli_util
-      sha256: b8db3080e59b2503ca9e7922c3df2072cf13992354d5e944074ffa836fba43b7
+      sha256: c05b7406fdabc7a49a3929d4af76bcaccbbffcbcdcf185b082e1ae07da323d19
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.0"
+    version: "0.4.1"
   clock:
     dependency: transitive
     description:
@@ -149,10 +149,10 @@ packages:
     dependency: "direct main"
     description:
       name: general_lib
-      sha256: a13a609e75b9b3f4bc888dba057d2a96a50d38a5a7fda0e186f29639298207c1
+      sha256: d97be4079f5cf9f63e068b534393cb9a74fe96666e13d2e1b062cd92c9b8305d
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.15"
   get_it:
     dependency: transitive
     description:
@@ -170,13 +170,13 @@ packages:
     source: hosted
     version: "2.1.2"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
-      sha256: "38dce67ce909c338754840e2a1479c2c11347a2fc7ec3d5b166a5118a8a201db"
+      sha256: d4872660c46d929f6b8a9ef4e7a7eff7e49bbf0c4ec3f385ee32df5119175139
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.1.2"
   http_multi_server:
     dependency: transitive
     description:
@@ -269,10 +269,10 @@ packages:
     dependency: "direct dev"
     description:
       name: msix
-      sha256: "957d04eee260e4bd15bec1fdb988dfc73718285e201cf89d97ef01ef38e66d4c"
+      sha256: "519b183d15dc9f9c594f247e2d2339d855cf0eaacc30e19b128e14f3ecc62047"
       url: "https://pub.dev"
     source: hosted
-    version: "3.16.6"
+    version: "3.16.7"
   node_preamble:
     dependency: transitive
     description:
@@ -293,10 +293,10 @@ packages:
     dependency: "direct dev"
     description:
       name: packagex
-      sha256: "2214fb35183d21db209ef17e2a9f3c54af43e915ebab746fd41a0f18e9f87e21"
+      sha256: b55151c211bc504101121b369926d99fff1c189f18110977dca56cd834d5b681
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.31"
+    version: "0.0.38"
   path:
     dependency: "direct main"
     description:
