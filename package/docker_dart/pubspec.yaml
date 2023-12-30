@@ -1,0 +1,45 @@
+name: docker_dart
+description: docker_dart library for make your program dart more easy.
+version: 0.0.3
+repository: https://github.com/azkadev/docker.git
+issue_tracker: https://github.com/azkadev/docker.git
+homepage: https://youtube.com/@azkadev
+
+
+executables:
+  docker_dart: docker_dart
+  
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  alfred: ^1.1.1
+  general_lib: ^0.0.1
+  path: ^1.8.3
+#   path: ^1.8.0
+
+dev_dependencies:
+  lints: ^3.0.0
+  msix: ^3.12.1
+  packagex: ^0.0.31
+  test: ^1.24.2
+
+msix_config: 
+  display_name: docker_dart
+  install_certificate: false
+  # publisher_display_name: Azkadev
+  # identity_name: org.azkadev.docker_dart
+  # msix_version: 0.0.0.0
+  # capabilities: internetClient, location, microphone, webcam
+
+packagex:
+  name: docker_dart
+  dart_target: docker_dart
+  flutter_target: main
+  dart_name: docker_dart
+  flutter_name: docker_dart
+  flutter_commands:
+    obfuscate: true
+    split-debug-info: 0.0.5
+  
