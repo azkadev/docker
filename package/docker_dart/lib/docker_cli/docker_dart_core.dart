@@ -1,17 +1,52 @@
 // ignore_for_file: unused_local_variable
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:docker_dart/scheme/scheme.dart';
+import 'package:docker_dart/docker_cli/scheme/scheme.dart';
+import 'package:docker_dart/docker_engine/docker_engine.dart';
+import 'package:general_lib/scheme/socket_connection.dart';
+import 'package:general_lib/websocket/websocket_client.dart';
 
-class DockerCli {
-  late bool is_privilage;
-  DockerCli({
-    bool isPrivilage = false,
+class DockerEngineCli implements DockerEngine {
+  @override
+  bool is_privilage = false;
+  @override
+  late Uri host_docker_engine_api;
+
+  DockerEngineCli({
+    Uri? hostDockerEngineApi,
+    bool? isPrivilage,
   }) {
-    is_privilage = isPrivilage;
+    is_privilage = isPrivilage ?? false;
   }
+
+
+
+  Future<WebSocketClient> attachViaWebsocket({required String containerId, bool logs = true, bool stream = true, bool stdin = true, bool stdout = true, bool stderr = true, required Future<void> Function(dynamic data) onSocketData, required FutureOr<void> Function(SocketConnection socketConnection) onSocketConnection, Uri? hostDockerEngineApi, Iterable<String>? protocols, Map<String, dynamic>? headers, CompressionOptions compression = CompressionOptions.compressionDefault, HttpClient? httpClient, Duration? pingInterval}) {
+    // TODO: implement attachViaWebsocket
+    throw UnimplementedError();
+  }
+
+  @override
+  Uri getHostDocker({Uri? hostDockerEngineApi}) {
+    // TODO: implement getHostDocker
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Map> invoke({required String path_method, Map<String, String>? queryParameters, Map? parameters, String method_name = "get", Uri? hostDockerEngineApi}) {
+    // TODO: implement invoke
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Map> invokeRaw({required String path_method, required Map<String, String>? queryParameters, required Map? parameters, String method_name = "get", required Uri? hostDockerEngineApi}) {
+    // TODO: implement invokeRaw
+    throw UnimplementedError();
+  }
+
 
   Future<String> io_run({
     required List<String> arguments,
@@ -199,19 +234,16 @@ class DockerCli {
     );
   }
 
-
-
   Future<Ok> deleteContainers({
     required List<String> names,
     bool force = true,
   }) async {
-    
-
     return await deleteContainerRaw(
       names: names,
       force: force,
     );
   }
+
   Future<DeletedImageData> deleteImageById({
     required String image_id,
     bool force = true,
@@ -837,4 +869,6 @@ class DockerCli {
       "volumes": volumes,
     };
   }
+ 
+
 }

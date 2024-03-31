@@ -5,13 +5,20 @@ import 'package:docker_dart/docker_cli/docker_dart_core.dart';
 import 'package:docker_dart/docker_engine_api/docker_engine_api.dart';
 
 class Docker {
-  DockerEngineApi engine_api() {
-    return DockerEngineApi();
+
+  DockerEngineApi engine_api({
+
+    Uri? hostDockerEngineApi,
+  }) {
+    return DockerEngineApi(
+      hostDockerEngineApi: hostDockerEngineApi,
+    );
   }
 
-  DockerCli cli({
+  DockerEngineCli engine_cli({
     bool isPrivilage = false,
   }) {
-    return DockerCli(isPrivilage: isPrivilage);
+    return DockerEngineCli(isPrivilage: isPrivilage);
   }
+
 }

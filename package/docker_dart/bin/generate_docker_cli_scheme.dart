@@ -96,5 +96,5 @@ void main(List<String> args) async {
     },
   ];
 
-  await jsonToScripts(schemes, directory: Directory(join(Directory.current.path, "lib", "scheme")));
+  await jsonToScripts(schemes, directory: Directory(join(Directory.current.path, "lib", "docker_cli", "scheme")));
 }

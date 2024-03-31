@@ -1,2 +1,2 @@
 export 'docker_dart_core.dart';
-export "scheme/scheme.dart";
+export 'docker_cli/scheme/scheme.dart';

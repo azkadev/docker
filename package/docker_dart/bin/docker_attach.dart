@@ -1,16 +1,13 @@
-import 'dart:async';
-import 'dart:convert';
+ 
 import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:docker_dart/docker_dart_core.dart';
 import 'package:docker_dart/docker_engine_api/docker_engine_api.dart';
 import 'package:general_lib/general_lib.dart';
-import 'package:http/http.dart';
 
 void main() async {
-  Docker docker = Docker();
-  Uri uri_host_docker = Uri.parse("http://0.0.0.0:2375/");
+  Docker docker = Docker(); 
   String container_id = "c4d5be73a4f60eafed8c376e2d550dee60be63b2c9c45db5207bd18c35a8c5bc";
 
   DockerEngineApi dockerEngineApi = docker.engine_api();

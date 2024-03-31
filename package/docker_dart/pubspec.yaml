@@ -15,15 +15,16 @@ environment:
 
 dependencies:
   alfred: ^1.1.1
-  general_lib: ^0.0.15
+  general_lib: ^0.0.27
   http: ^1.1.2
   path: ^1.8.3
+  system_info_fetch: ^0.0.13
 #   path: ^1.8.0
 
 dev_dependencies:
   lints: ^3.0.0
   msix: ^3.12.1
-  packagex: ^0.0.31
+  packagex: ^0.0.48
   test: ^1.24.2
 
 msix_config: 
