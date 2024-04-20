@@ -1,10 +1,10 @@
 // ignore_for_file: non_constant_identifier_names, unused_import
-import "json_dart.dart";
+import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
 import "container_data.dart";
 
-
+ 
 class ContainerDatas extends JsonScheme {
 
   
@@ -28,12 +28,12 @@ class ContainerDatas extends JsonScheme {
 
 
   
-  int? get count {
+  num? get count {
     try {
-      if (rawData["count"] is int == false){
+      if (rawData["count"] is num == false){
         return null;
       }
-      return rawData["count"] as int;
+      return rawData["count"] as num;
     } catch (e) {
       return null;
     }
@@ -56,7 +56,7 @@ class ContainerDatas extends JsonScheme {
   static ContainerDatas create({
 
     String special_type = "containerDatas",
-    int? count,
+    num? count,
       List<ContainerData>? containers,
 })  {
     // ContainerDatas containerDatas = ContainerDatas({

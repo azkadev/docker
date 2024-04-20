@@ -1,10 +1,10 @@
 // ignore_for_file: non_constant_identifier_names, unused_import
-import "json_dart.dart";
+import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
 import "volume_data.dart";
 
-
+ 
 class VolumeDatas extends JsonScheme {
 
   
@@ -28,12 +28,12 @@ class VolumeDatas extends JsonScheme {
 
 
   
-  int? get count {
+  num? get count {
     try {
-      if (rawData["count"] is int == false){
+      if (rawData["count"] is num == false){
         return null;
       }
-      return rawData["count"] as int;
+      return rawData["count"] as num;
     } catch (e) {
       return null;
     }
@@ -56,7 +56,7 @@ class VolumeDatas extends JsonScheme {
   static VolumeDatas create({
 
     String special_type = "volumeDatas",
-    int? count,
+    num? count,
       List<VolumeData>? volumes,
 })  {
     // VolumeDatas volumeDatas = VolumeDatas({

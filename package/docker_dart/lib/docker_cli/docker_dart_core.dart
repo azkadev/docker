@@ -22,8 +22,6 @@ class DockerEngineCli implements DockerEngine {
     is_privilage = isPrivilage ?? false;
   }
 
-
-
   Future<WebSocketClient> attachViaWebsocket({required String containerId, bool logs = true, bool stream = true, bool stdin = true, bool stdout = true, bool stderr = true, required Future<void> Function(dynamic data) onSocketData, required FutureOr<void> Function(SocketConnection socketConnection) onSocketConnection, Uri? hostDockerEngineApi, Iterable<String>? protocols, Map<String, dynamic>? headers, CompressionOptions compression = CompressionOptions.compressionDefault, HttpClient? httpClient, Duration? pingInterval}) {
     // TODO: implement attachViaWebsocket
     throw UnimplementedError();
@@ -46,7 +44,6 @@ class DockerEngineCli implements DockerEngine {
     // TODO: implement invokeRaw
     throw UnimplementedError();
   }
-
 
   Future<String> io_run({
     required List<String> arguments,
@@ -730,7 +727,9 @@ class DockerEngineCli implements DockerEngine {
     return NetworkDatas.create(count: networkDatas.length, networks: networkDatas);
   }
 
-  Future<List> inspectContainerByNameRaw({required String name}) async {
+  Future<List> inspectContainerByNameRaw({
+    required String name,
+  }) async {
     // sudo docker container inspect blender_space --format json
     List<String> arguments = [
       "container",
@@ -869,6 +868,4 @@ class DockerEngineCli implements DockerEngine {
       "volumes": volumes,
     };
   }
- 
-
 }

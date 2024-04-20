@@ -54,7 +54,7 @@ class DockerEngineApi implements DockerEngine {
   Future<Map> invokeRaw({
     required String path_method,
     required Map<String, String>? queryParameters,
-    required Map? parameters,
+    required Map? parameters, 
     String method_name = "get",
     required Uri? hostDockerEngineApi,
   }) async {
@@ -73,8 +73,7 @@ class DockerEngineApi implements DockerEngine {
       }
       return await get(url, headers: headers);
     });
-    Map body = {};
-    // print(response.text);
+    Map body = {}; 
     dynamic data_result = () {
       try {
         return json.decode(response.text);

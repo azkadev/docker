@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "openapi:v2": "file:///home/galaxeus/Documents/galaxeus/app/docker/v1.45.yaml"
+    }
+}

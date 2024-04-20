@@ -1,22 +1,17 @@
 // ignore_for_file: non_constant_identifier_names, unused_import
-import "json_dart.dart";
+import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
-
 class DeletedImageData extends JsonScheme {
-
-  
   DeletedImageData(super.rawData);
-   
+
   static Map get defaultData {
-    return {"@type":"deletedImageData","message":""};
+    return {"@type": "deletedImageData", "message": ""};
   }
 
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -25,11 +20,9 @@ class DeletedImageData extends JsonScheme {
     }
   }
 
-
-  
   String? get message {
     try {
-      if (rawData["message"] is String == false){
+      if (rawData["message"] is String == false) {
         return null;
       }
       return rawData["message"] as String;
@@ -38,29 +31,19 @@ class DeletedImageData extends JsonScheme {
     }
   }
 
-
-  
   static DeletedImageData create({
-
     String special_type = "deletedImageData",
     String? message,
-})  {
+  }) {
     // DeletedImageData deletedImageData = DeletedImageData({
-Map deletedImageData_data_create_json = {
-  
+    Map deletedImageData_data_create_json = {
       "@type": special_type,
       "message": message,
+    };
 
+    deletedImageData_data_create_json.removeWhere((key, value) => value == null);
+    DeletedImageData deletedImageData_data_create = DeletedImageData(deletedImageData_data_create_json);
 
-};
-
-
-          deletedImageData_data_create_json.removeWhere((key, value) => value == null);
-DeletedImageData deletedImageData_data_create = DeletedImageData(deletedImageData_data_create_json);
-
-return deletedImageData_data_create;
-
-
-
-      }
+    return deletedImageData_data_create;
+  }
 }
