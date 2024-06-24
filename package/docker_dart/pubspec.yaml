@@ -34,3 +34,5 @@ packagex:
 publish_to: 'none'
 dependency_overrides: 
   pointycastle: '3.8.0'
+funding: 
+  - 'https://github.com/sponsors/azkadev'
