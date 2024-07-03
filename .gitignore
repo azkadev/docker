@@ -1,2 +1,10 @@
 docker2/
 package/docker_dart/temp/
+*.exe
+*.deb
+*.sqlite-*
+*.sqlite
+docs/canvaskit
+*/canvaskit
+.dart_tool/
+/build/

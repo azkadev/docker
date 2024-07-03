@@ -4,3 +4,10 @@
 
 *.json
 temp/
+*.exe
+*.deb
+*.sqlite-*
+*.sqlite
+docs/canvaskit
+*/canvaskit
+/build/
