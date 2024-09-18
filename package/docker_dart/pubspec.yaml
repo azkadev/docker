@@ -12,7 +12,7 @@ dependencies:
   alfred: '^1.1.1'
   general_lib: '^0.0.44'
   http: '^1.1.2'
-  path: '^1.8.3'
+  path: '^1.9.0'
   system_info_fetch: '^0.0.23'
 dev_dependencies: 
   lints: '^3.0.0'
