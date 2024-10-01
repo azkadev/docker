@@ -8,10 +8,37 @@ class ImageData extends JsonScheme {
 
   
   ImageData(super.rawData);
-   
+  
+  /// return default data
+  /// 
   static Map get defaultData {
     return {"@type":"imageData","image_id":"IMAGE ID","containers":"CONTAINERS","created_at":"CREATED AT","created":"CREATED","digest":"DIGEST","repository":"REPOSITORY","shared_size":"SHARED SIZE","size":"SIZE","tag":"TAG","unique_size":"UNIQUE SIZE"};
   }
+
+  /// check data 
+  /// if raw data 
+  /// - rawData["@type"] == imageData
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  
+
+  /// create [ImageData]
+  /// Empty  
+  static ImageData empty() {
+    return ImageData({});
+  }
+
+  
 
   
   String? get special_type {
@@ -23,6 +50,11 @@ class ImageData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set special_type(String? value) {
+    rawData["@type"] = value;
   }
 
 
@@ -38,6 +70,11 @@ class ImageData extends JsonScheme {
     }
   }
 
+  
+  set image_id(String? value) {
+    rawData["image_id"] = value;
+  }
+
 
   
   String? get containers {
@@ -49,6 +86,11 @@ class ImageData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set containers(String? value) {
+    rawData["containers"] = value;
   }
 
 
@@ -64,6 +106,11 @@ class ImageData extends JsonScheme {
     }
   }
 
+  
+  set created_at(String? value) {
+    rawData["created_at"] = value;
+  }
+
 
   
   String? get created {
@@ -75,6 +122,11 @@ class ImageData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set created(String? value) {
+    rawData["created"] = value;
   }
 
 
@@ -90,6 +142,11 @@ class ImageData extends JsonScheme {
     }
   }
 
+  
+  set digest(String? value) {
+    rawData["digest"] = value;
+  }
+
 
   
   String? get repository {
@@ -101,6 +158,11 @@ class ImageData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set repository(String? value) {
+    rawData["repository"] = value;
   }
 
 
@@ -116,6 +178,11 @@ class ImageData extends JsonScheme {
     }
   }
 
+  
+  set shared_size(String? value) {
+    rawData["shared_size"] = value;
+  }
+
 
   
   String? get size {
@@ -127,6 +194,11 @@ class ImageData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set size(String? value) {
+    rawData["size"] = value;
   }
 
 
@@ -142,6 +214,11 @@ class ImageData extends JsonScheme {
     }
   }
 
+  
+  set tag(String? value) {
+    rawData["tag"] = value;
+  }
+
 
   
   String? get unique_size {
@@ -155,9 +232,15 @@ class ImageData extends JsonScheme {
     }
   }
 
+  
+  set unique_size(String? value) {
+    rawData["unique_size"] = value;
+  }
+
 
   
   static ImageData create({
+              bool schemeUtilsIsSetDefaultData = false,
 
     String special_type = "imageData",
     String? image_id,
@@ -172,7 +255,7 @@ class ImageData extends JsonScheme {
     String? unique_size,
 })  {
     // ImageData imageData = ImageData({
-Map imageData_data_create_json = {
+final Map imageData_data_create_json = {
   
       "@type": special_type,
       "image_id": image_id,
@@ -191,10 +274,15 @@ Map imageData_data_create_json = {
 
 
           imageData_data_create_json.removeWhere((key, value) => value == null);
-ImageData imageData_data_create = ImageData(imageData_data_create_json);
 
-return imageData_data_create;
-
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (imageData_data_create_json.containsKey(key) == false) {
+          imageData_data_create_json[key] = value;
+        }
+      });
+    }
+return ImageData(imageData_data_create_json);
 
 
       }

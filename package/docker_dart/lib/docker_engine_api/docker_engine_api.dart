@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:docker_dart/docker_engine/docker_engine.dart';
+import 'package:docker_dart/base/base.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:http/http.dart';
@@ -23,38 +23,14 @@ import 'package:http/http.dart';
 /// 5. test
 ///
 /// curl http://0.0.0.0:1111/version
-class DockerEngineApi implements DockerEngine {
-  @override
-  bool is_privilage = false;
-  @override
-  Uri host_docker_engine_api = Uri.parse(
-    "http://0.0.0.0:1111/",
-  );
-
-  /// slebew
-  /// Default
-  /// 0.0.0.0:1111
-  @override
-  DockerEngineApi({
-    Uri? hostDockerEngineApi,
-  }) {
-    if (hostDockerEngineApi != null) {
-      host_docker_engine_api = hostDockerEngineApi;
-    }
-  }
-
-  @override
-  Uri getHostDocker({
-    Uri? hostDockerEngineApi,
-  }) {
-    return hostDockerEngineApi ??= host_docker_engine_api;
-  }
+class DockerEngineApi extends DockerEngineBase {
+  DockerEngineApi({required super.dockerEngineApi, required super.isPrivilage});
 
   @override
   Future<Map> invokeRaw({
     required String path_method,
     required Map<String, String>? queryParameters,
-    required Map? parameters, 
+    required Map? parameters,
     String method_name = "get",
     required Uri? hostDockerEngineApi,
   }) async {
@@ -73,7 +49,7 @@ class DockerEngineApi implements DockerEngine {
       }
       return await get(url, headers: headers);
     });
-    Map body = {}; 
+    Map body = {};
     dynamic data_result = () {
       try {
         return json.decode(response.text);
@@ -124,11 +100,13 @@ class DockerEngineApi implements DockerEngine {
     HttpClient? httpClient,
     Duration? pingInterval,
   }) async {
-    hostDockerEngineApi ??= host_docker_engine_api;
+    final uri = getHostDocker(
+      hostDockerEngineApi: hostDockerEngineApi
+    );
 
     WebSocketClient ws = WebSocketClient(
-      hostDockerEngineApi.replace(
-        scheme: hostDockerEngineApi.scheme.replaceAll(RegExp("http", caseSensitive: false), "ws"),
+      uri.replace(
+        scheme: uri.scheme.replaceAll(RegExp("http", caseSensitive: false), "ws"),
         path: "containers/${containerId}/attach/ws",
         queryParameters: {
           "logs": (logs) ? "true" : "false",

@@ -8,10 +8,37 @@ class ContainerStatsData extends JsonScheme {
 
   
   ContainerStatsData(super.rawData);
-   
+  
+  /// return default data
+  /// 
   static Map get defaultData {
     return {"@type":"containerStatsData","container_id":"a000ae808918","name":"gnrl_api","container":"a000ae808918","block_io":"406kB / 0B","cpu_percent":"0.01%","mem_percent":"0.09%","mem_usage_limit":"6.875MiB / 7.116GiB","net_io":"0B / 0B","pids":"15"};
   }
+
+  /// check data 
+  /// if raw data 
+  /// - rawData["@type"] == containerStatsData
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  
+
+  /// create [ContainerStatsData]
+  /// Empty  
+  static ContainerStatsData empty() {
+    return ContainerStatsData({});
+  }
+
+  
 
   
   String? get special_type {
@@ -23,6 +50,11 @@ class ContainerStatsData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set special_type(String? value) {
+    rawData["@type"] = value;
   }
 
 
@@ -38,6 +70,11 @@ class ContainerStatsData extends JsonScheme {
     }
   }
 
+  
+  set container_id(String? value) {
+    rawData["container_id"] = value;
+  }
+
 
   
   String? get name {
@@ -49,6 +86,11 @@ class ContainerStatsData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set name(String? value) {
+    rawData["name"] = value;
   }
 
 
@@ -64,6 +106,11 @@ class ContainerStatsData extends JsonScheme {
     }
   }
 
+  
+  set container(String? value) {
+    rawData["container"] = value;
+  }
+
 
   
   String? get block_io {
@@ -75,6 +122,11 @@ class ContainerStatsData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set block_io(String? value) {
+    rawData["block_io"] = value;
   }
 
 
@@ -90,6 +142,11 @@ class ContainerStatsData extends JsonScheme {
     }
   }
 
+  
+  set cpu_percent(String? value) {
+    rawData["cpu_percent"] = value;
+  }
+
 
   
   String? get mem_percent {
@@ -101,6 +158,11 @@ class ContainerStatsData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set mem_percent(String? value) {
+    rawData["mem_percent"] = value;
   }
 
 
@@ -116,6 +178,11 @@ class ContainerStatsData extends JsonScheme {
     }
   }
 
+  
+  set mem_usage_limit(String? value) {
+    rawData["mem_usage_limit"] = value;
+  }
+
 
   
   String? get net_io {
@@ -127,6 +194,11 @@ class ContainerStatsData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set net_io(String? value) {
+    rawData["net_io"] = value;
   }
 
 
@@ -142,9 +214,15 @@ class ContainerStatsData extends JsonScheme {
     }
   }
 
+  
+  set pids(String? value) {
+    rawData["pids"] = value;
+  }
+
 
   
   static ContainerStatsData create({
+              bool schemeUtilsIsSetDefaultData = false,
 
     String special_type = "containerStatsData",
     String? container_id,
@@ -158,7 +236,7 @@ class ContainerStatsData extends JsonScheme {
     String? pids,
 })  {
     // ContainerStatsData containerStatsData = ContainerStatsData({
-Map containerStatsData_data_create_json = {
+final Map containerStatsData_data_create_json = {
   
       "@type": special_type,
       "container_id": container_id,
@@ -176,10 +254,15 @@ Map containerStatsData_data_create_json = {
 
 
           containerStatsData_data_create_json.removeWhere((key, value) => value == null);
-ContainerStatsData containerStatsData_data_create = ContainerStatsData(containerStatsData_data_create_json);
 
-return containerStatsData_data_create;
-
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (containerStatsData_data_create_json.containsKey(key) == false) {
+          containerStatsData_data_create_json[key] = value;
+        }
+      });
+    }
+return ContainerStatsData(containerStatsData_data_create_json);
 
 
       }

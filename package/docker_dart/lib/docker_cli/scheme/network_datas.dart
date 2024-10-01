@@ -9,10 +9,37 @@ class NetworkDatas extends JsonScheme {
 
   
   NetworkDatas(super.rawData);
-   
+  
+  /// return default data
+  /// 
   static Map get defaultData {
     return {"@type":"networkDatas","count":6,"networks":[{"@type":"networkData","network_id":"NETWORK ID","name":"NAME","created_at":"CREATED AT","driver":"DRIVER","ipv6":"IPV6","internal":"INTERNAL","labels":"LABELS","scope":"SCOPE"}]};
   }
+
+  /// check data 
+  /// if raw data 
+  /// - rawData["@type"] == networkDatas
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  
+
+  /// create [NetworkDatas]
+  /// Empty  
+  static NetworkDatas empty() {
+    return NetworkDatas({});
+  }
+
+  
 
   
   String? get special_type {
@@ -24,6 +51,11 @@ class NetworkDatas extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set special_type(String? value) {
+    rawData["@type"] = value;
   }
 
 
@@ -40,6 +72,11 @@ class NetworkDatas extends JsonScheme {
   }
 
   
+  set count(num? value) {
+    rawData["count"] = value;
+  }
+
+  
   List<NetworkData> get networks {
     try {
       if (rawData["networks"] is List == false){
@@ -53,14 +90,22 @@ class NetworkDatas extends JsonScheme {
 
 
   
+  set networks(List<NetworkData> values) {
+    rawData["networks"] = values.map((value) => value.toJson()).toList();
+  }
+
+
+
+  
   static NetworkDatas create({
+              bool schemeUtilsIsSetDefaultData = false,
 
     String special_type = "networkDatas",
     num? count,
       List<NetworkData>? networks,
 })  {
     // NetworkDatas networkDatas = NetworkDatas({
-Map networkDatas_data_create_json = {
+final Map networkDatas_data_create_json = {
   
       "@type": special_type,
       "count": count,
@@ -71,10 +116,15 @@ Map networkDatas_data_create_json = {
 
 
           networkDatas_data_create_json.removeWhere((key, value) => value == null);
-NetworkDatas networkDatas_data_create = NetworkDatas(networkDatas_data_create_json);
 
-return networkDatas_data_create;
-
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (networkDatas_data_create_json.containsKey(key) == false) {
+          networkDatas_data_create_json[key] = value;
+        }
+      });
+    }
+return NetworkDatas(networkDatas_data_create_json);
 
 
       }

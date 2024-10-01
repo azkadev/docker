@@ -1,6 +1,0 @@
-import 'package:docker/docker.dart';
-
-void main() {
-  var awesome = Awesome();
-  print('awesome: ${awesome.isAwesome}');
-}

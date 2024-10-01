@@ -8,10 +8,37 @@ class VolumeData extends JsonScheme {
 
   
   VolumeData(super.rawData);
-   
+  
+  /// return default data
+  /// 
   static Map get defaultData {
     return {"@type":"volumeData","volume_name":"VOLUME NAME","driver":"DRIVER","mountpoint":"MOUNTPOINT","labels":"LABELS","scope":"SCOPE"};
   }
+
+  /// check data 
+  /// if raw data 
+  /// - rawData["@type"] == volumeData
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  
+
+  /// create [VolumeData]
+  /// Empty  
+  static VolumeData empty() {
+    return VolumeData({});
+  }
+
+  
 
   
   String? get special_type {
@@ -23,6 +50,11 @@ class VolumeData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set special_type(String? value) {
+    rawData["@type"] = value;
   }
 
 
@@ -38,6 +70,11 @@ class VolumeData extends JsonScheme {
     }
   }
 
+  
+  set volume_name(String? value) {
+    rawData["volume_name"] = value;
+  }
+
 
   
   String? get driver {
@@ -49,6 +86,11 @@ class VolumeData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set driver(String? value) {
+    rawData["driver"] = value;
   }
 
 
@@ -64,6 +106,11 @@ class VolumeData extends JsonScheme {
     }
   }
 
+  
+  set mountpoint(String? value) {
+    rawData["mountpoint"] = value;
+  }
+
 
   
   String? get labels {
@@ -75,6 +122,11 @@ class VolumeData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set labels(String? value) {
+    rawData["labels"] = value;
   }
 
 
@@ -90,9 +142,15 @@ class VolumeData extends JsonScheme {
     }
   }
 
+  
+  set scope(String? value) {
+    rawData["scope"] = value;
+  }
+
 
   
   static VolumeData create({
+              bool schemeUtilsIsSetDefaultData = false,
 
     String special_type = "volumeData",
     String? volume_name,
@@ -102,7 +160,7 @@ class VolumeData extends JsonScheme {
     String? scope,
 })  {
     // VolumeData volumeData = VolumeData({
-Map volumeData_data_create_json = {
+final Map volumeData_data_create_json = {
   
       "@type": special_type,
       "volume_name": volume_name,
@@ -116,10 +174,15 @@ Map volumeData_data_create_json = {
 
 
           volumeData_data_create_json.removeWhere((key, value) => value == null);
-VolumeData volumeData_data_create = VolumeData(volumeData_data_create_json);
 
-return volumeData_data_create;
-
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (volumeData_data_create_json.containsKey(key) == false) {
+          volumeData_data_create_json[key] = value;
+        }
+      });
+    }
+return VolumeData(volumeData_data_create_json);
 
 
       }

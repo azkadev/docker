@@ -8,10 +8,37 @@ class NetworkData extends JsonScheme {
 
   
   NetworkData(super.rawData);
-   
+  
+  /// return default data
+  /// 
   static Map get defaultData {
     return {"@type":"networkData","network_id":"NETWORK ID","name":"NAME","created_at":"CREATED AT","driver":"DRIVER","ipv6":"IPV6","internal":"INTERNAL","labels":"LABELS","scope":"SCOPE"};
   }
+
+  /// check data 
+  /// if raw data 
+  /// - rawData["@type"] == networkData
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  
+
+  /// create [NetworkData]
+  /// Empty  
+  static NetworkData empty() {
+    return NetworkData({});
+  }
+
+  
 
   
   String? get special_type {
@@ -23,6 +50,11 @@ class NetworkData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set special_type(String? value) {
+    rawData["@type"] = value;
   }
 
 
@@ -38,6 +70,11 @@ class NetworkData extends JsonScheme {
     }
   }
 
+  
+  set network_id(String? value) {
+    rawData["network_id"] = value;
+  }
+
 
   
   String? get name {
@@ -49,6 +86,11 @@ class NetworkData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set name(String? value) {
+    rawData["name"] = value;
   }
 
 
@@ -64,6 +106,11 @@ class NetworkData extends JsonScheme {
     }
   }
 
+  
+  set created_at(String? value) {
+    rawData["created_at"] = value;
+  }
+
 
   
   String? get driver {
@@ -75,6 +122,11 @@ class NetworkData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set driver(String? value) {
+    rawData["driver"] = value;
   }
 
 
@@ -90,6 +142,11 @@ class NetworkData extends JsonScheme {
     }
   }
 
+  
+  set ipv6(String? value) {
+    rawData["ipv6"] = value;
+  }
+
 
   
   String? get internal {
@@ -101,6 +158,11 @@ class NetworkData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set internal(String? value) {
+    rawData["internal"] = value;
   }
 
 
@@ -116,6 +178,11 @@ class NetworkData extends JsonScheme {
     }
   }
 
+  
+  set labels(String? value) {
+    rawData["labels"] = value;
+  }
+
 
   
   String? get scope {
@@ -129,9 +196,15 @@ class NetworkData extends JsonScheme {
     }
   }
 
+  
+  set scope(String? value) {
+    rawData["scope"] = value;
+  }
+
 
   
   static NetworkData create({
+              bool schemeUtilsIsSetDefaultData = false,
 
     String special_type = "networkData",
     String? network_id,
@@ -144,7 +217,7 @@ class NetworkData extends JsonScheme {
     String? scope,
 })  {
     // NetworkData networkData = NetworkData({
-Map networkData_data_create_json = {
+final Map networkData_data_create_json = {
   
       "@type": special_type,
       "network_id": network_id,
@@ -161,10 +234,15 @@ Map networkData_data_create_json = {
 
 
           networkData_data_create_json.removeWhere((key, value) => value == null);
-NetworkData networkData_data_create = NetworkData(networkData_data_create_json);
 
-return networkData_data_create;
-
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (networkData_data_create_json.containsKey(key) == false) {
+          networkData_data_create_json[key] = value;
+        }
+      });
+    }
+return NetworkData(networkData_data_create_json);
 
 
       }

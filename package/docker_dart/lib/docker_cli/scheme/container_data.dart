@@ -8,10 +8,37 @@ class ContainerData extends JsonScheme {
 
   
   ContainerData(super.rawData);
-   
+  
+  /// return default data
+  /// 
   static Map get defaultData {
     return {"@type":"containerData","container_id":"9373c91634d9","image":"telegram-bot-api","names":"telegram-bot-api","command":"\"telegram-bot-api --…\"","created_at":"2023-11-07 12:19:50 +0700 WIB","labels":"org.opencontainers.image.version=22.04,org.opencontainers.image.ref.name=ubuntu","local_volumes":"0","mounts":"/home/galaxeus…,/usr","networks":"host","ports":"","created":"2 weeks ago","size":"0B (virtual 77.9MB)","state":"running","status":"Up 7 hours"};
   }
+
+  /// check data 
+  /// if raw data 
+  /// - rawData["@type"] == containerData
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  
+
+  /// create [ContainerData]
+  /// Empty  
+  static ContainerData empty() {
+    return ContainerData({});
+  }
+
+  
 
   
   String? get special_type {
@@ -23,6 +50,11 @@ class ContainerData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set special_type(String? value) {
+    rawData["@type"] = value;
   }
 
 
@@ -38,6 +70,11 @@ class ContainerData extends JsonScheme {
     }
   }
 
+  
+  set container_id(String? value) {
+    rawData["container_id"] = value;
+  }
+
 
   
   String? get image {
@@ -49,6 +86,11 @@ class ContainerData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set image(String? value) {
+    rawData["image"] = value;
   }
 
 
@@ -64,6 +106,11 @@ class ContainerData extends JsonScheme {
     }
   }
 
+  
+  set names(String? value) {
+    rawData["names"] = value;
+  }
+
 
   
   String? get command {
@@ -75,6 +122,11 @@ class ContainerData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set command(String? value) {
+    rawData["command"] = value;
   }
 
 
@@ -90,6 +142,11 @@ class ContainerData extends JsonScheme {
     }
   }
 
+  
+  set created_at(String? value) {
+    rawData["created_at"] = value;
+  }
+
 
   
   String? get labels {
@@ -101,6 +158,11 @@ class ContainerData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set labels(String? value) {
+    rawData["labels"] = value;
   }
 
 
@@ -116,6 +178,11 @@ class ContainerData extends JsonScheme {
     }
   }
 
+  
+  set local_volumes(String? value) {
+    rawData["local_volumes"] = value;
+  }
+
 
   
   String? get mounts {
@@ -127,6 +194,11 @@ class ContainerData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set mounts(String? value) {
+    rawData["mounts"] = value;
   }
 
 
@@ -142,6 +214,11 @@ class ContainerData extends JsonScheme {
     }
   }
 
+  
+  set networks(String? value) {
+    rawData["networks"] = value;
+  }
+
 
   
   String? get ports {
@@ -153,6 +230,11 @@ class ContainerData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set ports(String? value) {
+    rawData["ports"] = value;
   }
 
 
@@ -168,6 +250,11 @@ class ContainerData extends JsonScheme {
     }
   }
 
+  
+  set created(String? value) {
+    rawData["created"] = value;
+  }
+
 
   
   String? get size {
@@ -179,6 +266,11 @@ class ContainerData extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set size(String? value) {
+    rawData["size"] = value;
   }
 
 
@@ -194,6 +286,11 @@ class ContainerData extends JsonScheme {
     }
   }
 
+  
+  set state(String? value) {
+    rawData["state"] = value;
+  }
+
 
   
   String? get status {
@@ -207,9 +304,15 @@ class ContainerData extends JsonScheme {
     }
   }
 
+  
+  set status(String? value) {
+    rawData["status"] = value;
+  }
+
 
   
   static ContainerData create({
+              bool schemeUtilsIsSetDefaultData = false,
 
     String special_type = "containerData",
     String? container_id,
@@ -228,7 +331,7 @@ class ContainerData extends JsonScheme {
     String? status,
 })  {
     // ContainerData containerData = ContainerData({
-Map containerData_data_create_json = {
+final Map containerData_data_create_json = {
   
       "@type": special_type,
       "container_id": container_id,
@@ -251,10 +354,15 @@ Map containerData_data_create_json = {
 
 
           containerData_data_create_json.removeWhere((key, value) => value == null);
-ContainerData containerData_data_create = ContainerData(containerData_data_create_json);
 
-return containerData_data_create;
-
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (containerData_data_create_json.containsKey(key) == false) {
+          containerData_data_create_json[key] = value;
+        }
+      });
+    }
+return ContainerData(containerData_data_create_json);
 
 
       }

@@ -5,22 +5,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:docker_dart/docker_cli/scheme/scheme.dart';
-import 'package:docker_dart/docker_engine/docker_engine.dart';
+import 'package:docker_dart/base/base.dart';
 import 'package:general_lib/scheme/socket_connection.dart';
 import 'package:general_lib/websocket/websocket_client.dart';
 
-class DockerEngineCli implements DockerEngine {
-  @override
-  bool is_privilage = false;
-  @override
-  late Uri host_docker_engine_api;
-
-  DockerEngineCli({
-    Uri? hostDockerEngineApi,
-    bool? isPrivilage,
-  }) {
-    is_privilage = isPrivilage ?? false;
-  }
+class DockerEngineCli extends DockerEngineBase {
+  DockerEngineCli({required super.dockerEngineApi, required super.isPrivilage});
+ 
 
   Future<WebSocketClient> attachViaWebsocket({required String containerId, bool logs = true, bool stream = true, bool stdin = true, bool stdout = true, bool stderr = true, required Future<void> Function(dynamic data) onSocketData, required FutureOr<void> Function(SocketConnection socketConnection) onSocketConnection, Uri? hostDockerEngineApi, Iterable<String>? protocols, Map<String, dynamic>? headers, CompressionOptions compression = CompressionOptions.compressionDefault, HttpClient? httpClient, Duration? pingInterval}) {
     // TODO: implement attachViaWebsocket
@@ -867,5 +858,5 @@ class DockerEngineCli implements DockerEngine {
       "count": volumes.length,
       "volumes": volumes,
     };
-  }
+  } 
 }

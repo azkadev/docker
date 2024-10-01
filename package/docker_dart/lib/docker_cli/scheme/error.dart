@@ -8,10 +8,37 @@ class Error extends JsonScheme {
 
   
   Error(super.rawData);
-   
+  
+  /// return default data
+  /// 
   static Map get defaultData {
     return {"@type":"error","message":"","description":""};
   }
+
+  /// check data 
+  /// if raw data 
+  /// - rawData["@type"] == error
+  /// if same return true
+  bool json_scheme_utils_checkDataIsSameBySpecialType() {
+    return rawData["@type"] == defaultData["@type"];
+  }
+
+  /// check value data whatever do yout want
+  bool json_scheme_utils_checkDataIsSameBuilder({
+    required bool Function(Map rawData, Map defaultData) onResult,
+  }) {
+    return onResult(rawData["@type"], defaultData["@type"]);
+  }
+
+  
+
+  /// create [Error]
+  /// Empty  
+  static Error empty() {
+    return Error({});
+  }
+
+  
 
   
   String? get special_type {
@@ -23,6 +50,11 @@ class Error extends JsonScheme {
     } catch (e) {
       return null;
     }
+  }
+
+  
+  set special_type(String? value) {
+    rawData["@type"] = value;
   }
 
 
@@ -38,6 +70,11 @@ class Error extends JsonScheme {
     }
   }
 
+  
+  set message(String? value) {
+    rawData["message"] = value;
+  }
+
 
   
   String? get description {
@@ -51,16 +88,22 @@ class Error extends JsonScheme {
     }
   }
 
+  
+  set description(String? value) {
+    rawData["description"] = value;
+  }
+
 
   
   static Error create({
+              bool schemeUtilsIsSetDefaultData = false,
 
     String special_type = "error",
     String? message,
     String? description,
 })  {
     // Error error = Error({
-Map error_data_create_json = {
+final Map error_data_create_json = {
   
       "@type": special_type,
       "message": message,
@@ -71,10 +114,15 @@ Map error_data_create_json = {
 
 
           error_data_create_json.removeWhere((key, value) => value == null);
-Error error_data_create = Error(error_data_create_json);
 
-return error_data_create;
-
+    if (schemeUtilsIsSetDefaultData) {
+      defaultData.forEach((key, value) {
+        if (error_data_create_json.containsKey(key) == false) {
+          error_data_create_json[key] = value;
+        }
+      });
+    }
+return Error(error_data_create_json);
 
 
       }
