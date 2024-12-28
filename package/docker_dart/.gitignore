@@ -22,3 +22,4 @@ linux/flutter/ephemeral
 macos/Flutter/ephemeral
 windows/ephemeral
 tmp/
+generate_general_private_tools_*

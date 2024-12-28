@@ -7,17 +7,17 @@ homepage: 'https://youtube.com/@azkadev'
 executables:
   docker_dart: 'docker_dart'
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 dependencies:
   alfred: '^1.1.1'
-  general_lib: '^0.0.50'
+  general_lib: '^0.0.51'
   http: '^1.2.2'
   path: '^1.9.0'
-  system_information: '^0.0.4'
+  system_information: '^0.0.5'
 dev_dependencies:
   lints: '^5.0.0'
   msix: '^3.12.1'
-  packagex: '^0.0.65'
+  packagex: '^0.0.66'
   test: 'any'
 msix_config:
   display_name: 'docker_dart'
