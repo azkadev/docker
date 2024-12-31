@@ -10,14 +10,14 @@ environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
   alfred: '^1.1.1'
-  general_lib: '^0.0.51'
+  general_lib: '^0.0.52'
   http: '^1.2.2'
   path: '^1.9.0'
-  system_information: '^0.0.5'
+  system_information: '^0.0.6'
 dev_dependencies:
   lints: '^5.0.0'
   msix: '^3.12.1'
-  packagex: '^0.0.66'
+  packagex: '^0.0.67'
   test: 'any'
 msix_config:
   display_name: 'docker_dart'
