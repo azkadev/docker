@@ -1,6 +1,9 @@
 include: package:lints/recommended.yaml
-linter: 
+linter:
   rules:
-    non_constant_identifier_names: false
-    empty_catches: false
-    unnecessary_brace_in_string_interps: false
+    - public_member_api_docs
+analyzer:
+  exclude:
+    - test
+    - dev
+    - templates
