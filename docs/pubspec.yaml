@@ -5,18 +5,18 @@ version: '0.0.0'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
+  cupertino_icons: '^1.0.2'
   flutter:
     sdk: 'flutter'
-  cupertino_icons: '^1.0.2'
 dev_dependencies:
+  flutter_lints: '^5.0.0'
   flutter_test:
     sdk: 'flutter'
-  flutter_lints: '^5.0.0'
 flutter:
   uses-material-design: true
 dependency_overrides:
-  pointycastle: '4.0.0'
   mime: '^2.0.0'
+  pointycastle: '^4.0.0'
 funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
@@ -26,3 +26,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 documentation: 'https://youtube.com/@azkadev'
 project:
   type: ''
+  is_use_direct_package: false
+  is_private: false
+  developers:
+    - username: ''
+      note: ''
+      social_medias:
+        - 'https://github.com'

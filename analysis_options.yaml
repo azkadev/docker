@@ -4,8 +4,13 @@ analyzer:
     - test
     - dev
     - templates
+  errors:
+    unnecessary_brace_in_string_interps: ignore
+    unnecessary_string_interpolations: ignore
+    todo: ignore
 linter:
   rules:
     - public_member_api_docs
+    - always_declare_return_types
 formatter:
   page_width: 9999999999

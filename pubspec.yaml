@@ -4,17 +4,15 @@ version: '0.0.0'
 environment:
   sdk: '>=3.6.0 <4.0.0'
 dependencies:
-  general_lib: '^0.0.71'
-  mason_logger: '^0.3.1'
+  general_universe: '^0.0.0'
   path: '^1.9.0'
-  universal_io: '^2.2.2'
 dev_dependencies:
   lints: '^5.0.0'
   test: 'any'
 publish_to: 'none'
 dependency_overrides:
-  pointycastle: '4.0.0'
   mime: '^2.0.0'
+  pointycastle: '^4.0.0'
 funding:
   - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/generalfoss'
@@ -24,3 +22,10 @@ issue_tracker: 'https://t.me/DEVELOPER_GLOBAL_PUBLIC'
 documentation: 'https://youtube.com/@azkadev'
 project:
   type: ''
+  is_use_direct_package: false
+  is_private: false
+  developers:
+    - username: ''
+      note: ''
+      social_medias:
+        - 'https://github.com'
